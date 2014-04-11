@@ -11,8 +11,6 @@ $request = Request::createFromGlobals();
 $response = new Response();
 $routes = include __DIR__.'/../src/app.php';
 
-include __DIR__.'/../src/controller.php';
-
 $context = new Routing\RequestContext();
 $context->fromRequest($request);
 

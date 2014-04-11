@@ -13,4 +13,5 @@ return array(
     'Symfony\\Component\\ClassLoader' => array($vendorDir . '/symfony/class-loader'),
     'Simplex' => array($baseDir . '/src'),
     'SessionHandlerInterface' => array($vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs'),
+    'Calendar' => array($baseDir . '/src'),
 );
