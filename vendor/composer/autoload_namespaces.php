@@ -11,5 +11,6 @@ return array(
     'Symfony\\Component\\HttpFoundation' => array($vendorDir . '/symfony/http-foundation'),
     'Symfony\\Component\\EventDispatcher' => array($vendorDir . '/symfony/event-dispatcher'),
     'Symfony\\Component\\ClassLoader' => array($vendorDir . '/symfony/class-loader'),
+    'Simplex' => array($baseDir . '/src'),
     'SessionHandlerInterface' => array($vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs'),
 );
