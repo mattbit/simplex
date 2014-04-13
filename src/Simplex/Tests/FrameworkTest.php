@@ -5,6 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\HttpKernel\Controller\ControllerResolver;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 class FrameworkTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,7 +41,13 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
 		;
 
 		$resolver = new ControllerResolver();
-		$framework = new Framework($matcher, $resolver);
+		$dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcher');
+		$dispatcher
+			->expects($this->once())
+			->method('dispatch')
+			->with('response')
+		;
+		$framework = new Framework($matcher, $resolver, $dispatcher);
 
 		$response = $framework->handle(new Request());
 
@@ -57,7 +64,13 @@ class FrameworkTest extends \PHPUnit_Framework_TestCase
 			->will($this->throwException($exception))
 		;
 		$resolver = $this->getMock('Symfony\Component\HttpKernel\Controller\ControllerResolverInterface');
+		$dispatcher = $this->getMock('Symfony\Component\EventDispatcher\EventDispatcher');
+		$dispatcher
+			->expects($this->once())
+			->method('dispatch')
+			->with('response')
+		;
 
-		return new Framework($matcher, $resolver);
+		return new Framework($matcher, $resolver, $dispatcher);
 	}
 }
